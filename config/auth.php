@@ -18,6 +18,8 @@ return [
         'passwords' => 'users',
     ],
 
+    
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -39,6 +41,11 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+
+        'admin' => [
+            'driver' => 'session',  // Hoặc 'token' nếu bạn sử dụng Sanctum hoặc Passport
+            'provider' => 'users', // Tên provider tương ứng
         ],
     ],
 

@@ -22,7 +22,12 @@ Route::prefix('/')->group(function () {
     Route::get('/home',[MainController::class, 'index'])->name('main');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::get('dashboard',[AdminController::class, 'dashboard'])->name('dashboard');
-    Route::get('login', [AdminAuthController::class,'showLoginForm'])->name('login');
+    Route::get('admin/login', [AdminAuthController::class,'showLoginForm'])->name('login');
+    Route::post('admin/author', [AdminAuthController::class,'author'])->name('author');
+
+    Route::middleware(['auth:admin'])->group(function () {
+        Route::prefix('admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('dashboard', [AdminController::class, 'index']);
+        });
 });
