@@ -1,0 +1,11 @@
+.nav-treeview {
+    display: none; /* Ẩn danh sách thả xuống mặc định */
+    position: absolute;
+    background-color: white; /* Màu nền của danh sách thả xuống */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  
+  .nav-item:hover .nav-treeview {
+    display: block; /* Hiển thị danh sách thả xuống khi hover lên mục cha */
+  }
+  
