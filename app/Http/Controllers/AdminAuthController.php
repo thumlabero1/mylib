@@ -23,11 +23,13 @@ class AdminAuthController extends Controller
         ]);
         
             if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], $request->input('remember'))) {
-                return redirect()->intended(route('admin.dashboard'));
+                return redirect()->intended(url('admin/dashboard'));
+                
             }
+            
               
-        // Session::flash('error', 'Email hoặc password không chính xác');
-        // return redirect()->back();
+        Session::flash('error', 'Email hoặc password không chính xác');
+        return redirect()->back();
 
         // dd($request->all());
         
