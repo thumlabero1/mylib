@@ -22,8 +22,9 @@ class AdminAuthController extends Controller
             "password" => "required|min:6",
         ]);
         
-            if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], $request->input('remember'))) {
-                return redirect()->intended(url('admin/dashboard'));
+            if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')],
+             $request->input('remember'))) {
+            return redirect()->intended(url('admin/dashboard'));
                 
             }
             

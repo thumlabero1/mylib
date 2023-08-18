@@ -1,3 +1,3 @@
-@include('admin.includes.head');
-@includes('admin.includes.sidebar');
-@include('admin.includes.footer');
+@include('frontend.includes.head');
+@include('frontend.includes.sidebar');
+@include('frontend.includes.footer');

@@ -32,3 +32,5 @@ Route::prefix('/')->group(function () {
         Route::get('dashboard', [AdminController::class, 'index']);
         });
 });
+
+Route::get('/',[MainController::class, 'index'])->name('main');
