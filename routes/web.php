@@ -32,3 +32,6 @@ Route::prefix('/')->group(function () {
         Route::get('dashboard', [AdminController::class, 'index']);
         });
 });
+
+ Route::get('admin/dashboard', [AdminAuthController::class, 'index']);
+ Route::get('/logout', [AdminAuthController::class, 'logout'])->name('logout');

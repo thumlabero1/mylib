@@ -40,4 +40,10 @@ class AdminAuthController extends Controller
         return view('admin.dashboard');
     }
 
+    public function logout()
+{
+    Auth::logout(); // Đăng xuất người dùng
+    return redirect('admin/login'); // Chuyển hướng đến trang đăng nhập sau khi đăng xuất
+}
+
 }
