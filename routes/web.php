@@ -22,16 +22,17 @@ Route::prefix('/')->group(function () {
     Route::get('/home',[MainController::class, 'index'])->name('main');
 });
 
-    Route::get('admin/login', [AdminAuthController::class,'showLoginForm'])->name('login');
-    Route::post('admin/author', [AdminAuthController::class,'author'])->name('author');
+Route::get('admin/login', [AdminAuthController::class,'showLoginForm'])->name('login');
+Route::post('admin/author', [AdminAuthController::class,'author'])->name('author');
 
-    Route::middleware(['auth:admin'])->group(function () {
-        Route::prefix('admin')->group(function () {
-        
-        Route::get('admin/dashboard', [AdminAuthController::class, 'index']);
-        Route::get('dashboard', [AdminController::class, 'index']);
-        });
-});
+// Route::middleware(['auth:admin'])->group(function () {
+//         Route::get('admin/dashboard', [AdminAuthController::class, 'index']);
+//         Route::get('/dashboard', [AdminAuthController::class, 'index']);
+// });
 
  Route::get('admin/dashboard', [AdminAuthController::class, 'index']);
+// Route::get('admin/dashboard', [AdminAuthController::class, 'index'])->middleware('auth:admin');
+
  Route::get('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+
+Route::get('/',[MainController::class, 'index'])->name('main');
