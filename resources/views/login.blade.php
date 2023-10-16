@@ -4,36 +4,59 @@
 <div class="limiter">
     <div class="container-login100" style="background-image: url('{{ asset('images/logintheme.jpg') }}')">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form class="login100-form validate-form" action="{{ route('author') }}" method="POST">
-            
-                <span class="login100-form-title p-b-49 mt-2">
-                    <strong>Login</strong>
-                </span>
-                <div class="wrap-input100 validate-input m-b-23 ml-3 mr-2" data-validate="Email is required">
-                    <span class="label-input100">Email</span>
-                    <input class="input100" type="email" name="email" id="email" placeholder="Type your email">
-                    <span class="focus-input100"></span>
-                </div>
-                <div class="wrap-input100 validate-input ml-3 mr-2" data-validate="Password is required">
-                    <span class="label-input100">Password</span>
-                        <input class="input100" type="password" name="password" id="password" placeholder="Type your password">
-                    <span class="focus-input100"></span>
-                </div>
-                <div class="text-right p-t-8 p-b-31">
-                    <a href="#">Forgot password?</a>
-                </div>
-                <div class="container-login100-form-btn">
-                <div class="input-checkbox">
-                    <input type="checkbox" name="remember" id="remember">
-                    <label for="remember">Remember Me</label>
-                </div>
-                    <div class="wrap-login100-form-btn">
-                        <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn">Login</button>
-                    </div>
-                </div>
-                @csrf
-            </form>
+        <form class="login100-form validate-form" action="{{ route('author') }}" method="POST">
+    <span class="login100-form-title p-b-49 mt-2">
+        <strong>Login</strong>
+    </span>
+
+    <!-- Display validation errors -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <!-- Display login error message -->
+    @if (Session::has('error'))
+        <div class="alert alert-danger">
+            {{ Session::get('error') }}
+        </div>
+    @endif
+
+    <div class="wrap-input100 validate-input m-b-23 ml-3 mr-2" data-validate="Email is required">
+        <span class="label-input100">Email</span>
+        <input class="input100" type="email" name="email" id="email" placeholder="Type your email" required>
+        <span class="focus-input100"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input ml-3 mr-2" data-validate="Password is required">
+        <span class="label-input100">Password</span>
+        <input class="input100" type="password" name="password" id="password" placeholder="Type your password" required>
+        <span class="focus-input100"></span>
+    </div>
+
+    <div class="text-right p-t-8 p-b-31">
+        <a href="#">Forgot password?</a>
+    </div>
+
+    <div class="container-login100-form-btn">
+        <div class="input-checkbox">
+            <input type="checkbox" name="remember" id="remember">
+            <label for="remember">Remember Me</label>
+        </div>
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button type="submit" class="login100-form-btn">Login</button>
+        </div>
+    </div>
+
+    @csrf
+</form>
+
             <div class="txt1 text-center p-t-54 p-b-20 mt-4">
         <span>Or Login Using</span>
     </div>
